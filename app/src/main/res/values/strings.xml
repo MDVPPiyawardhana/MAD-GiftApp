@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Payment</string>
+    <string name="addCard">Add a credit / debit card</string>
+    <string name="cardNumber">Card number</string>
+    <string name="securityCode">Security code(CVV)</string>
+    <string name="cardholderName">Cardholder name</string>
+    <string name="dateOfExpire">Date of expire</string>
+    <string name="saveCard">Save Card Details</string>
+    <string name="done">Done</string>
+    <string name="insCardDet">Debit / Credit card details</string>
+    <string name="change">Change</string>
+    <string name="openPayment1">openPayment1</string>
+    <string name="upDetails">Update Details</string>
+    <string name="cancel">Cancel</string>
+    <string name="payNow">Pay now</string>
+    <string name="cashOnDel">Cash on Delivery</string>
+    <string name="payOnline">Pay Online</string>
+    <string name="choosePaymentMeth">Choose a Payment Method</string>
+    <string name="shippingDet">Shipping details</string>
+    <string name="icon" />
+</resources>
