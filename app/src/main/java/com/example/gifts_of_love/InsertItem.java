@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 public class InsertItem extends AppCompatActivity {
 
@@ -46,6 +50,8 @@ public class InsertItem extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        imageView = findViewById(R.id.imageView);
+
         if(resultCode == RESULT_OK && requestCode == Image){
             imageView.setImageURI(data.getData());
 
@@ -54,18 +60,13 @@ public class InsertItem extends AppCompatActivity {
 
     public void onClickAdd(View view){
 
-        Toast toast = Toast.makeText(this, "Successfully Added...", Toast.LENGTH_SHORT);
-        toast.show();
-
-        //Navigate Items View Page
-        Intent intent = new Intent(this, ViewItems.class);
-        startActivity(intent);
 
         editTextItemName = findViewById(R.id.editTextItemName);
         editTextPrice = findViewById(R.id.editTextPrice);
         editTextCategory = findViewById(R.id.editTextCategory);
         editTextDescription = findViewById(R.id.editTextDescription);
         imageView = findViewById(R.id.imageView);
+
 
         context = this;
         dbConnect = new DBConnect(context);
@@ -74,14 +75,25 @@ public class InsertItem extends AppCompatActivity {
         String price = editTextPrice.getText().toString();
         String category = editTextCategory.getText().toString();
         String description = editTextDescription.getText().toString();
-        String image = "";
+        byte[] image = imageViewToByte(imageView);
 
         GiftItems giftItems = new GiftItems(itemName, price, category, image, description);
         dbConnect.addItems(giftItems);
 
+        Toast toast = Toast.makeText(this, "Successfully Added...", Toast.LENGTH_SHORT);
+        toast.show();
 
+        //Navigate Items View Page
+        Intent intent = new Intent(this, ViewItems.class);
+        startActivity(intent);
 
     }
 
-
+    public static byte[] imageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
 }

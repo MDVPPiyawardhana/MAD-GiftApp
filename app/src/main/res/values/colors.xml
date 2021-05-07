@@ -12,4 +12,6 @@
     <color name="LightPink">#E9769D</color>
     <color name="LPink">#E57CA0</color>
     <color name="NewPink">#F8B8CE</color>
+    <color name="Dark">#25020E</color>
+    <color name="PinkGrey">#4D3F44</color>
 </resources>

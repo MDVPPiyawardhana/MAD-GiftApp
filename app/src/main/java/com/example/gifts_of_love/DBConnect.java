@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBConnect extends SQLiteOpenHelper {
 
     private static final int VERSION = 1;
@@ -35,7 +38,7 @@ public class DBConnect extends SQLiteOpenHelper {
                 +ITEM_NAME+ " TEXT, "
                 +PRICE+ " TEXT, "
                 +CATEGORY+ " TEXT, "
-                +IMAGE+ " TEXT, "
+                +IMAGE+ " BLOB, "
                 +DESCRIPTION+ " TEXT);";
 
         //Run Query
@@ -78,6 +81,32 @@ public class DBConnect extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(query, null);
         return cursor.getCount();
+    }
+
+    //Get Items from the table
+    public List<GiftItems> getItems() {
+
+        List<GiftItems> listItems = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                GiftItems items = new GiftItems();
+
+                items.setItemCode(cursor.getInt(0));
+                items.setItemName(cursor.getString(1));
+                items.setPrice(cursor.getString(2));
+                items.setCategory(cursor.getString(3));
+                items.setImages(cursor.getBlob(4));
+                items.setDescription(cursor.getString(5));
+
+                listItems.add(items);
+            } while (cursor.moveToNext());
+        }
+        return listItems;
     }
 
 }
