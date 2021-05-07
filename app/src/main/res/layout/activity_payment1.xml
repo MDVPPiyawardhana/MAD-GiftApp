@@ -4,67 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@drawable/back"
     tools:context=".Payment1">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="408dp"
-        android:layout_height="366dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="80dp"
+        app:cardBackgroundColor="@color/lightPink"
+        app:cardCornerRadius="34dp"
+        app:cardElevation="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/chndCardDet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/insCardDet"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="351dp"
+            android:layout_height="368dp"
+            android:padding="20dp">
 
-        <Button
-            android:id="@+id/change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="32dp"
-            android:onClick="change"
-            android:text="@string/change"
-            app:backgroundTint="@color/black"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/shippingDet"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/shippingDet"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/chndCardDet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="28dp"
+                android:text="@string/insCardDet"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/change1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/change"
-            app:backgroundTint="@color/black" />
-
-    </LinearLayout>
+            <Button
+                android:id="@+id/change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="108dp"
+                android:onClick="change"
+                android:text="@string/change"
+                app:backgroundTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="410dp"
-        android:layout_height="61dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +60,7 @@
 
         <Button
             android:id="@+id/payNow"
-            android:layout_width="200dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:text="@string/payNow"
@@ -80,7 +68,7 @@
 
         <Button
             android:id="@+id/cancel"
-            android:layout_width="200dp"
+            android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="3dp"
             android:layout_marginRight="5dp"
@@ -88,5 +76,9 @@
             android:text="@string/cancel"
             app:backgroundTint="@color/black" />
     </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
