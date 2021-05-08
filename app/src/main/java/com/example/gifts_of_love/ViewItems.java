@@ -1,19 +1,19 @@
 package com.example.gifts_of_love;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ViewItems extends AppCompatActivity {
 
-    private GridView listView;
+    GridView gridView;
     TextView txtTotalItems;
     Context context;
     private List<GiftItems> gifts;
@@ -30,17 +30,39 @@ public class ViewItems extends AppCompatActivity {
         dbConnect = new DBConnect(this);
 
         txtTotalItems = findViewById(R.id.txtTotalItems);
-        listView = findViewById(R.id.gridView);
+        gridView = findViewById(R.id.gridView);
         gifts = new ArrayList<>();
 
         gifts = dbConnect.getItems();
 
         GiftAdapter adapter = new GiftAdapter(context, R.layout.single_card, gifts);
-        listView.setAdapter(adapter);
+        gridView.setAdapter(adapter);
 
         //Get count from the table
         int total = dbConnect.countItems();
-        txtTotalItems.setText("Total: " +total+ " Items");
+        txtTotalItems.setText("Total: " + total + " Items");
+
+        //Retrieve data from particular item
+        gridView.setOnItemClickListener((parent, view, position, id) -> {
+
+
+
+            final GiftItems it = gifts.get(position);
+            String code = String.valueOf(it.getItemCode());
+
+          //Toast toast = Toast.makeText(context, "Position: " + position + " Code: " + code, Toast.LENGTH_SHORT);
+          //toast.show();
+
+          Intent intent = new Intent(this, Single_GiftItem.class);
+          intent.putExtra("itemCode", code);
+          startActivity(intent);
+
+          /*Intent intent = new Intent(context, Single_GiftItem.class);
+          intent.putExtra("itemCode", code);
+          startActivity(intent);*/
+
+        });
 
     }
+
 }

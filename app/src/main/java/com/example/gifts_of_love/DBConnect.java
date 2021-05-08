@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DBConnect extends SQLiteOpenHelper {
 
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private static final String DB_NAME = "Gifts";
     private static final String TABLE_NAME = "Items";
 
@@ -107,6 +107,28 @@ public class DBConnect extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return listItems;
+    }
+
+    //Get a single data
+    public GiftItems getSingleItem(int id){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME, new String[]{ITEM_CODE, ITEM_NAME, PRICE, CATEGORY, IMAGE, DESCRIPTION},ITEM_CODE + "=?", new String[]{String.valueOf(id)},null, null,null);
+
+        GiftItems items;
+        if (cursor != null){
+            cursor.moveToFirst();
+            items = new GiftItems(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getBlob(4),
+                    cursor.getString(5)
+            );
+            return items;
+        }
+        return null;
     }
 
 }

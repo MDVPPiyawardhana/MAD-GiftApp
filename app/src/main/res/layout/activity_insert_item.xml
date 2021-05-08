@@ -8,10 +8,12 @@
     android:orientation="horizontal">
 
     <Button
+        android:id="@+id/showItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Show"
+        android:onClick="OnClickViewBtn"
+        android:text="View Gift Items"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"></Button>
 

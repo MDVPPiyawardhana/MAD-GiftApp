@@ -58,6 +58,11 @@ public class InsertItem extends AppCompatActivity {
         }
     }
 
+    public void OnClickViewBtn(View view){
+        Intent intent = new Intent(this, ViewItems.class);
+        startActivity(intent);
+    }
+
     public void onClickAdd(View view){
 
 
@@ -82,10 +87,11 @@ public class InsertItem extends AppCompatActivity {
 
         Toast toast = Toast.makeText(this, "Successfully Added...", Toast.LENGTH_SHORT);
         toast.show();
-
-        //Navigate Items View Page
-        Intent intent = new Intent(this, ViewItems.class);
-        startActivity(intent);
+        editTextItemName.setText("");
+        editTextPrice.setText("");
+        editTextCategory.setText("");
+        editTextDescription.setText("");
+        imageView.setImageResource(R.drawable.ic_user);
 
     }
 

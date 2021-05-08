@@ -5,8 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText editUser, editPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +21,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view){
-        Intent intent = new Intent(this, InsertItem.class);
-        startActivity(intent);
+
+        //editUser = findViewById(R.id.input_username);
+        //editPassword = findViewById(R.id.inputPassword);
+
+        //String username = editUser.getText().toString();
+        //String password = editPassword.getText().toString();
+
+        //admin login
+        //if((Objects.equals(username, "admin")) && (Objects.equals(password, "admin123"))){
+            Intent intent = new Intent(this, InsertItem.class);
+            startActivity(intent);
+        //}
+
     }
-}
+
+    }
