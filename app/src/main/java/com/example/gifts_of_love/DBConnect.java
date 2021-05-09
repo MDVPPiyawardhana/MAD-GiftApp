@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DBConnect extends SQLiteOpenHelper {
 
-    private static final int VERSION = 2;
+    private static final int VERSION = 3;
     private static final String DB_NAME = "Gifts";
     private static final String TABLE_NAME = "Items";
 
@@ -129,6 +129,13 @@ public class DBConnect extends SQLiteOpenHelper {
             return items;
         }
         return null;
+    }
+
+    //Delete Items
+    public void DeleteItems(int id){
+        SQLiteDatabase db =  getWritableDatabase();
+        db.delete(TABLE_NAME, ITEM_CODE + " =?", new String[]{String.valueOf(id)});
+        db.close();
     }
 
 }

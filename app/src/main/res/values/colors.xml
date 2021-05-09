@@ -14,4 +14,6 @@
     <color name="NewPink">#F8B8CE</color>
     <color name="Dark">#25020E</color>
     <color name="PinkGrey">#4D3F44</color>
+    <color name="whitePink">#F4D4DF</color>
+    <color name="w_pink">#F1DCE3</color>
 </resources>

@@ -17,6 +17,13 @@
     <style name="Theme.Gifts_of_Love.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/NewPink</item>
+        <item name="colorSecondaryVariant">@color/LightPink</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Theme.Gifts_of_Love.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

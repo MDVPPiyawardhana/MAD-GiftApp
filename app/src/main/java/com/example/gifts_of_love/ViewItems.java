@@ -1,10 +1,14 @@
 package com.example.gifts_of_love;
 
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,12 +61,61 @@ public class ViewItems extends AppCompatActivity {
           intent.putExtra("itemCode", code);
           startActivity(intent);
 
-          /*Intent intent = new Intent(context, Single_GiftItem.class);
-          intent.putExtra("itemCode", code);
-          startActivity(intent);*/
+        });
 
+        //Update or Delete a particular item
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                final GiftItems it = gifts.get(position);
+                CharSequence[] buttons = {"Update", "Delete"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Choose an action...");
+                builder.setItems(buttons, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       if(which == 0) {
+                           //Update
+                           Intent intent = new Intent(context, InsertItem.class);
+                           startActivity(intent);
+                       }
+                       else {
+                           //Delete
+                           AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+
+                           builder1.setTitle("Delete This Item?");
+                           builder1.setMessage("Are you sure you want to delete this permanently?");
+                           builder1.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int which) {
+                                   dbConnect.DeleteItems(it.getItemCode());
+
+                                   Toast toast = Toast.makeText(context, "Deleted Successfully...", Toast.LENGTH_SHORT);
+                                   toast.show();
+
+                                   Intent intent = new Intent(context, ViewItems.class);
+                                   startActivity(intent);
+                               }
+                           });
+
+                           builder1.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int which) {
+                                   dialog.dismiss();
+                               }
+                           });
+                           builder1.show();
+                       }
+                    }
+                });
+                builder.show();
+                return true;
+            }
         });
 
     }
+
+
 
 }

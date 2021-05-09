@@ -91,7 +91,7 @@ public class InsertItem extends AppCompatActivity {
         editTextPrice.setText("");
         editTextCategory.setText("");
         editTextDescription.setText("");
-        imageView.setImageResource(R.drawable.ic_user);
+        imageView.setImageResource(R.drawable.image_gallary);
 
     }
 
