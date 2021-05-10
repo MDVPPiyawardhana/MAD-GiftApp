@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gifts_of_Love">
-        <activity android:name=".UpdateItems"
-            android:label="Edit Gift Item" ></activity>
+        <activity android:name=".UserCart"></activity>
+        <activity android:name=".UserSingleItemView" />
+        <activity android:name=".UserViewItems" />
+        <activity
+            android:name=".UpdateItems"
+            android:label="Edit Gift Item" />
         <activity
             android:name=".Single_GiftItem"
             android:label="Gift Item" />
