@@ -138,4 +138,22 @@ public class DBConnect extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Update Data
+    public int UpdateItems(GiftItems items){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ITEM_NAME, items.getItemName());
+        contentValues.put(PRICE, items.getPrice());
+        contentValues.put(CATEGORY, items.getCategory());
+        contentValues.put(IMAGE, items.getImages());
+        contentValues.put(DESCRIPTION, items.getDescription());
+
+        int status = db.update(TABLE_NAME, contentValues, ITEM_CODE +" =?", new String[]{String.valueOf(items.getItemCode())});
+        db.close();
+
+        return status;
+    }
+
 }

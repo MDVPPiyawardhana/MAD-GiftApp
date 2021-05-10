@@ -76,10 +76,15 @@ public class ViewItems extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                        if(which == 0) {
-                           //Update
-                           Intent intent = new Intent(context, InsertItem.class);
+
+                           String code = String.valueOf(it.getItemCode());
+
+                           //Pass values to update item page
+                           Intent intent = new Intent(context, UpdateItems.class);
+                           intent.putExtra("itemCode", code);
                            startActivity(intent);
                        }
+
                        else {
                            //Delete
                            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);

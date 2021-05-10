@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gifts_of_Love">
-        <activity android:name=".Single_GiftItem"
-            android:label="Gift Item"/>
-        <activity android:name=".ViewItems"
-            android:label="Gift Items"/>
+        <activity android:name=".UpdateItems"
+            android:label="Edit Gift Item" ></activity>
+        <activity
+            android:name=".Single_GiftItem"
+            android:label="Gift Item" />
+        <activity
+            android:name=".ViewItems"
+            android:label="Gift Items" />
         <activity
             android:name=".Splash"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

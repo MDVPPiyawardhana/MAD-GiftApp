@@ -11,6 +11,8 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText editUser, editPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickLogin(View view){
 
+        editUser = findViewById(R.id.input_username);
+        editPass = findViewById(R.id.inputPassword);
+
+        String username = editUser.getText().toString();
+        String password = editPass.getText().toString();
+
+
             Intent intent = new Intent(this, InsertItem.class);
             startActivity(intent);
+
 
     }
 

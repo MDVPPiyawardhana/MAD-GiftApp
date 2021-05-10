@@ -38,10 +38,6 @@ public class Single_GiftItem extends AppCompatActivity {
         String code = intent.getStringExtra("itemCode");
         int id = Integer.parseInt(code);
 
-
-        dPrice.setText(String.valueOf(id));
-
-
         GiftItems giftItems = dbConnect.getSingleItem(id);
 
         byte[] image = giftItems.getImages();
