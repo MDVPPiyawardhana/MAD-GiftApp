@@ -34,17 +34,14 @@ public class UserSingleItemView extends AppCompatActivity {
         dPrice = findViewById(R.id.displayPrice);
         dCategory = findViewById(R.id.displayCategory);
         dDescription = findViewById(R.id.displayDescription);
+        buttonBuy = findViewById(R.id.btnBuy);
 
 
         Intent intent = getIntent();
         String code = intent.getStringExtra("itemCode");
         int id = Integer.parseInt(code);
 
-
-        dPrice.setText(String.valueOf(id));
-
-
-        GiftItems giftItems = dbConnect.getSingleItem(id);
+        final GiftItems giftItems = dbConnect.getSingleItem(id);
 
         byte[] image = giftItems.getImages();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
@@ -55,28 +52,27 @@ public class UserSingleItemView extends AppCompatActivity {
         dCategory.setText(giftItems.getCategory());
         dDescription.setText(giftItems.getDescription());
 
-
-        //Send data to another activity.........................
-
-        buttonBuy = findViewById(R.id.btnBuy);
-
         buttonBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Send data to another activity.........................
                 String itemCode = String.valueOf(giftItems.getItemCode());
                 String itemName = giftItems.getItemName();
-                String price = giftItems.getPrice();
+                String itemPrice = giftItems.getPrice();
 
+                Intent intent1 = new Intent(context, UserCart.class);
+                intent1.putExtra("itemCode", itemCode);
+                intent1.putExtra("itemName", itemName);
+                intent1.putExtra("itemPrice", itemPrice);
 
-                Intent intent = new Intent(context, UserCart.class);
-                intent.putExtra("itemCode", itemCode);
-                intent.putExtra("itemName", itemName);
-                intent.putExtra("price", price);
-                startActivity(intent);
-
+                startActivity(intent1);
             }
         });
+
+
+
+
+
 
 
 
