@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Gifts_of_Love">
-        <activity android:name=".UserCart"></activity>
+        <activity android:name=".SignUp"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
+
+
+        </activity>
+        <activity android:name=".UserCart" />
         <activity android:name=".UserSingleItemView" />
         <activity android:name=".UserViewItems" />
         <activity
@@ -36,6 +41,8 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+
+
     </application>
 
 </manifest>

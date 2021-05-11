@@ -13,9 +13,12 @@ import java.util.List;
 
 public class DBConnect extends SQLiteOpenHelper {
 
-    private static final int VERSION = 3;
+    private static final int VERSION = 4;
     private static final String DB_NAME = "Gifts";
     private static final String TABLE_NAME = "Items";
+
+
+    private static final String TABLE_NAME2 = "User";
 
     //Column Names
     private static final String ITEM_CODE = "ItemCode";
@@ -24,6 +27,13 @@ public class DBConnect extends SQLiteOpenHelper {
     private static final String CATEGORY = "Category";
     private static final String IMAGE = "Images";
     private static final String DESCRIPTION = "Description";
+
+    private static final String USER_ID = "ItemCode";
+    private static final String NAME = "ItemName";
+    private static final String EMAIL = "Price";
+    private static final String USERNAME = "Category";
+    private static final String PASSWORD = "Images";
+
 
     public DBConnect(@Nullable Context context) {
         super(context, DB_NAME, null, VERSION);
@@ -43,6 +53,17 @@ public class DBConnect extends SQLiteOpenHelper {
 
         //Run Query
         db.execSQL(CREATE_TABLE_QUERY);
+
+        //Create User Table
+        String CREATE_TABLE_QUERY2 = "CREATE TABLE " +TABLE_NAME2+ " ("
+                +USER_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                +NAME+ " TEXT, "
+                +EMAIL+ " TEXT, "
+                +USERNAME+ " TEXT, "
+                +PASSWORD+ " TEXT);";
+
+        //Run Query
+        db.execSQL(CREATE_TABLE_QUERY2);
 
     }
 
@@ -71,6 +92,22 @@ public class DBConnect extends SQLiteOpenHelper {
 
         //Insert Values to table
         sqLiteDatabase.insert(TABLE_NAME,null, contentValues);
+        sqLiteDatabase.close();
+    }
+
+    //add user details
+    public void addUser(User user){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(NAME, user.getName());
+        contentValues.put(EMAIL, user.getEmail());
+        contentValues.put(USERNAME, user.getUsername());
+        contentValues.put(PASSWORD, user.getPassword());
+
+        //Insert Values to table
+        sqLiteDatabase.insert(TABLE_NAME2,null, contentValues);
         sqLiteDatabase.close();
     }
 
